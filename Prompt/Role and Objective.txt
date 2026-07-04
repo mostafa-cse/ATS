@@ -1,0 +1,97 @@
+Role and Objective:
+Act as an expert Full-Stack Software Engineer and System Architect. Your task is to build a comprehensive, production-ready e-commerce platform named "Aesthetic Tech Store". It is a smart e-commerce platform specializing in electronics, PC components, and networking gear tailored for the Bangladesh market.
+
+Technology Stack:
+
+Frontend: Next.js (App Router), React, Tailwind CSS (Hardware-accelerated Dark/White Mode UI), Framer Motion. Fetching data via API calls (Axios/Fetch).
+
+Backend: .NET 8 Web API (C#) enforcing Clean Architecture and N-Tier design.
+
+Database & Auth: PostgreSQL (hosted locally or via Supabase/Neon), ASP.NET Core Identity or JWT-based Authentication.
+
+ORM: Entity Framework Core (EF Core) with Code-First Migrations.
+
+Deployment: Vercel (Frontend) and Azure/Linux VPS (Backend) with GitHub Actions for CI/CD.
+
+Architecture & Engineering Principles (Strict Implementation):
+
+OOP & SOLID: Enforce Single Responsibility, Open-Closed, and Dependency Inversion principles across all services.
+
+Design Patterns: Use the Repository/Unit of Work Pattern for data access, the Strategy Pattern for the dynamic payment/EMI calculations and shipping zones, and the Factory Pattern for complex order instantiations.
+
+DSA: Apply appropriate Data Structures and Algorithms for high-performance features. The "Smart PC Builder" must utilize efficient graph traversal or constraint-satisfaction algorithms (e.g., leveraging frequency maps or hash sets for O(1) lookups) to validate component compatibility instantly.
+
+System Architecture (Tri-Panel System):
+The application UI must have three distinct role-based dashboards protected by Next.js middleware, communicating with strictly authorized .NET API endpoints:
+
+Admin Panel (/admin): Master control for inventory, marketing, and logistics.
+
+User Dashboard (/dashboard): Customer portal for orders, loyalty coins, and returns.
+
+Delivery Panel (/delivery): Mobile-optimized portal for logistics riders.
+
+Core Database Entities & Relationships (EF Core Guidelines):
+
+User: Roles (ADMIN, USER, RIDER), MegaCoin balance, Addresses.
+
+Product: Specs (JSON column for complex PC component data), BasePrice, DiscountPrice, Category, SocketType, Wattage, WarrantyInfo, StockStatus.
+
+Order: TotalAmount, AdvancePaid, PaymentMethod (SSLCommerz, Rocket, bKash, COD), Status, ShippingFee, RiderId.
+
+MegaCoinTransaction: Log of coins earned and spent.
+
+Feature Requirements by Role:
+
+1. User Panel & Storefront:
+
+UI/UX: A sleek, aesthetic Dark and White Mode design.
+
+Product Catalog: Advanced filtering (by brand, price, socket type, wattage).
+
+Smart PC Builder: An interactive tool where users select components. It MUST include algorithmic compatibility logic (e.g., prevent selecting an Intel CPU with an AM5 Motherboard, and accurately sum/calculate Power Supply wattage requirements using optimized data structures).
+
+Product Comparison: Allow users to select up to 4 items and render a side-by-side technical specs table.
+
+MegaCoin Loyalty System: Users earn coins on purchases and can apply their balance at checkout for discounts. Guest checkout is allowed, but prompt registration post-purchase to claim coins.
+
+2. Admin Panel:
+
+Catalog Management: Add/Edit products, define buying/return policies, and manage Guaranty/Warranty strings.
+
+Marketing: Create discount codes, toggle base/discount pricing, and configure the MegaCoin earning rate.
+
+Order Management: Process orders, assign pending orders to specific Delivery Riders, and manage returns.
+
+Verification Queue: A UI to mark high-value COD orders as "Customer Called & Confirmed."
+
+3. Delivery Panel (Mobile First):
+
+Order Queue: Riders view assigned orders and delivery addresses.
+
+Status Toggles: Buttons to update order status (Picked Up -> In Transit -> Delivered).
+
+Proof of Delivery: Secure delivery via a One-Time Password (OTP) sent to the user's phone, plus an upload button for photo proof.
+
+COD Ledger: A dashboard showing the rider how much cash they have collected today and owe to the Admin.
+
+Bangladesh Localization Requirements (Strict Implementation):
+
+Payments: Create mock API interfaces in .NET simulating local gateways (SSLCommerz, aamarPay) and MFS (bKash, Nagad).
+
+EMI Engine: Display automated EMI breakdowns (3 to 36 months) on product pages for items over ৳10,000 using a scalable Strategy Pattern in the backend.
+
+Conditional Partial Advance: If an order total exceeds ৳10,000 and the user selects Cash on Delivery (COD), the system must strictly require a 10% advance payment via MFS before confirming the order.
+
+Zone-Based Shipping: Dynamic shipping fees based on location (Inside Dhaka: flat rate, Outside Dhaka: higher rate + volumetric weight logic for heavy PC casings/monitors).
+
+Instructions for the AI:
+
+Begin by generating the core EF Core Entities (C# POCO classes) and the ApplicationDbContext.
+
+Next, outline the detailed folder/project structure for both the Next.js frontend and the .NET Clean Architecture backend (Core, Infrastructure, Application, API).
+
+Then, write the Next.js Middleware for frontend route protection AND demonstrate how to implement Role-Based Authorization using attributes ([Authorize(Roles = "Admin")]) in the .NET controllers.
+
+Finally, implement the backend logic for the "Smart PC Builder" compatibility engine and the "Conditional Partial Advance" checkout flow. Explicitly point out where and how you applied Design Patterns (e.g., Strategy, Factory) and optimized DSA concepts to handle this logic.
+
+Ask me if you need clarification on any specific module before generating the code.

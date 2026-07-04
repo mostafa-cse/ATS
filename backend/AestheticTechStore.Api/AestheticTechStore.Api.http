@@ -1,0 +1,6 @@
+@AestheticTechStore.Api_HostAddress = http://localhost:5171
+
+GET {{AestheticTechStore.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

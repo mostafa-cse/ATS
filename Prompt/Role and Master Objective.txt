@@ -1,0 +1,102 @@
+Role and Master Objective:
+Act as an Expert Full-Stack Software Architect and Lead Engineer. Your objective is to architect and generate production-ready code for "Aesthetic Tech Store"—a highly scalable, Tri-Panel e-commerce platform specializing in electronics and custom PC components for the Bangladesh market.
+
+You must strictly adhere to enterprise-grade Software Engineering principles, Clean Architecture (N-Tier), Object-Oriented Programming (SOLID), specific Gang of Four (GoF) Design Patterns, and optimized Data Structures and Algorithms (DSA) for core logic.
+
+1. Technology Stack & Infrastructure
+Frontend (Tri-Panel): Next.js (App Router), React, Tailwind CSS (Hardware-accelerated Dark/White UI), Framer Motion.
+
+Frontend State & Fetching: Zustand (for global state like the PC Builder cart), Axios/TanStack React Query for API interactions.
+
+Backend API: .NET 8 Web API (C#) enforcing CQRS (Command Query Responsibility Segregation) with MediatR.
+
+Authentication: ASP.NET Core Identity with JWT Bearer Tokens. NextAuth/Auth.js on the frontend.
+
+Database & ORM: PostgreSQL. Entity Framework Core 8 (Code-First) using the Repository and Unit of Work patterns.
+
+CI/CD & Deployment: GitHub Actions automating builds. Vercel for the Next.js frontend, Dockerized containers for the .NET backend.
+
+2. Architecture & Engineering Constraints (STRICT)
+.NET Clean Architecture Layers:
+
+Domain: Core entities, Enums, Interfaces, Domain Exceptions. Zero dependencies.
+
+Application: MediatR Handlers, DTOs, Validation (FluentValidation), Business Logic.
+
+Infrastructure: EF Core DbContext, Migrations, External API integrations (SMS/Payments).
+
+API (Presentation): Controllers/Minimal APIs, Middleware (Global Exception Handling, JWT Auth).
+
+Applied Design Patterns:
+
+Strategy Pattern: Implement for IPaymentGateway (Resolving bKash, Nagad, SSLCommerz, COD) and IShippingCalculator (Inside Dhaka vs. Outside Dhaka volumetric weight).
+
+Factory Method: Implement for generating complex Order objects and custom PC builds based on dynamic user selections.
+
+Data Structures & Algorithms (The PC Builder Engine):
+
+The "Smart PC Builder" compatibility logic MUST NOT rely on nested O(n^2) loops.
+
+Implement efficient constraint-satisfaction validation. Use Frequency Maps (Dictionaries in C#) and Hash Sets (HashSet<T>) for O(1) time-complexity lookups when comparing CPU socket types with Motherboard socket compatibility.
+
+Implement a sliding window or two-pointer approach if parsing sequential component data streams or analyzing price-drop histories.
+
+3. Core Database Entities (EF Core POCOs)
+Design the following relationships with proper Foreign Keys and Navigation Properties:
+
+AppUser: Id, Role (Admin, User, Rider), MegaCoinBalance, PasswordHash, ICollection<Order>, ICollection<Address>.
+
+Product: Id, SKU, Name, BasePrice, DiscountPrice, Category (Enum: CPU, GPU, Case, etc.), SocketType, RequiredWattage, StockStatus.
+
+Note: Use a JSONB column (mapped via EF Core) to store arbitrary TechnicalSpecs for future-proofing components.
+
+Order: Id, UserId, TotalAmount, AdvancePaid, PaymentMethod, OrderStatus (Pending, Processing, Shipped, Delivered), ShippingFee, RiderId (Nullable).
+
+MegaCoinTransaction: Id, UserId, Amount (+/-), TransactionType (Earned/Spent), CreatedAt.
+
+4. Tri-Panel System Requirements & Routing
+The Next.js middleware must strictly enforce role-based access for the following route groups:
+
+A. User Storefront (/app/(store)):
+
+Advanced filtering catalog (Brand, Socket, Wattage).
+
+Smart PC Builder: Interactive UI fetching compatibility constraints from the .NET API. Automatically tallies total Power Supply requirements.
+
+MegaCoin System: Dashboard showing coin ledger; checkout integration allowing users to offset their total price using their coin balance.
+
+B. Admin Panel (/app/admin):
+
+Dashboard for CRUD operations on inventory.
+
+Verification Queue: Critical UI for managing COD orders. Admins must have a toggle to mark high-value COD orders as "Verified via Phone Call."
+
+Logistics assignment panel to route orders to specific Riders.
+
+C. Delivery Panel (/app/delivery - Mobile Optimized):
+
+Dashboard for assigned riders to view active routes.
+
+Status progression toggles (Picked Up -> In Transit -> Delivered).
+
+Secure PoD: API endpoint to verify an OTP (sent to the customer) before the rider can successfully mark an electronics package as "Delivered."
+
+COD daily collection ledger.
+
+5. Bangladesh Localization & Business Logic
+MFS Partial Advance Enforcement: If an order total exceeds ৳10,000 and the user selects Cash on Delivery (COD), the backend API must block the transaction unless a 10% advance payment is completed via MFS (bKash/Nagad mock integration).
+
+Dynamic EMI Engine: Backend calculation service returning 3, 6, 12, and 36-month EMI breakdowns with standard local bank interest rates for items > ৳10,000.
+
+6. Execution Instructions for the AI
+Do not generate the entire project at once. Proceed step-by-step. Wait for my confirmation after each step before moving to the next.
+
+Step 1: Generate the folder structure tree for both the Next.js Frontend and the .NET 8 Clean Architecture Backend.
+
+Step 2: Write the core EF Core Domain Entities (Product, Order, AppUser) and the ApplicationDbContext with OnModelCreating configurations.
+
+Step 3: Implement the backend CQRS Handler and optimized DSA logic (using HashSets/Dictionaries) for the Smart PC Builder Compatibility Engine.
+
+Step 4: Implement the Strategy Pattern for the Payment and Shipping calculation logic.
+
+Step 5: Write the Next.js middleware.ts to handle role-based routing and protection for the three panels.

@@ -1,0 +1,90 @@
+Role and Objective:
+Act as an expert Full-Stack Software Engineer. Your task is to build a comprehensive, production-ready e-commerce platform named "Aesthetic Tech Store". It is a smart e-commerce platform specializing in electronics, PC components, and networking gear tailored for the Bangladesh market.
+
+Technology Stack:
+
+Frontend: Next.js (App Router), React, Tailwind CSS (Hardware-accelerated Dark Mode UI), Framer Motion (for smooth aesthetic animations).
+
+Backend: Next.js Server Actions / API Routes.
+
+Database & Auth: Supabase (PostgreSQL) for authentication and database management.
+
+ORM: Prisma.
+
+Deployment: Vercel with GitHub Actions for CI/CD.
+
+System Architecture (Tri-Panel System):
+The application must have three distinct role-based dashboards protected by secure middleware:
+
+Admin Panel (/admin): Master control for inventory, marketing, and logistics.
+
+User Dashboard (/dashboard): Customer portal for orders, loyalty coins, and returns.
+
+Delivery Panel (/delivery): Mobile-optimized portal for logistics riders.
+
+Core Database Entities & Relationships (Prisma Schema Guidelines):
+
+User: Roles (ADMIN, USER, RIDER), MegaCoin balance, Addresses.
+
+Product: Specs (JSON for complex PC component data), base_price, discount_price, category, socket_type, wattage, warranty_info, stock_status.
+
+Order: total_amount, advance_paid, payment_method (SSLCommerz, Rocket, bKash, COD), status, shipping_fee, rider_id.
+
+MegaCoinTransaction: Log of coins earned and spent.
+
+Feature Requirements by Role:
+
+1. User Panel & Storefront:
+
+UI/UX: A sleek, aesthetic Dark Mode design and White Mode.
+
+Product Catalog: Advanced filtering (by brand, price, socket type, wattage).
+
+Smart PC Builder: An interactive tool where users select components. It MUST include compatibility logic (e.g., prevent selecting an Intel CPU with an AM5 Motherboard, and calculate total Power Supply wattage requirements).
+
+Product Comparison: Allow users to select up to 4 items and render a side-by-side technical specs table.
+
+MegaCoin Loyalty System: Users earn coins on purchases and can apply their balance at checkout for discounts. Guest checkout is allowed, but prompt registration post-purchase to claim coins.
+
+2. Admin Panel:
+
+Catalog Management: Add/Edit products, define buying/return policies, and manage Guaranty/Warranty strings.
+
+Marketing: Create discount codes, toggle base/discount pricing, and configure the MegaCoin earning rate.
+
+Order Management: Process orders, assign pending orders to specific Delivery Riders, and manage returns.
+
+Verification Queue: A UI to mark high-value COD orders as "Customer Called & Confirmed."
+
+
+3. Delivery Panel (Mobile First):
+
+Order Queue: Riders view assigned orders and delivery addresses.
+
+Status Toggles: Buttons to update order status (Picked Up -> In Transit -> Delivered).
+
+Proof of Delivery: Secure delivery via a One-Time Password (OTP) sent to the user's phone, plus an upload button for photo proof.
+
+COD Ledger: A dashboard showing the rider how much cash they have collected today and owe to the Admin.
+
+Bangladesh Localization Requirements (Strict Implementation):
+
+Payments: Create mock interfaces or integrate SDKs for local gateways (SSLCommerz, aamarPay) and MFS (bKash, Nagad).
+
+EMI Engine: Display automated EMI breakdowns (3 to 36 months) on product pages for items over ৳10,000.
+
+Conditional Partial Advance: If an order total exceeds ৳10,000 and the user selects Cash on Delivery (COD), the system must strictly require a 10% advance payment via MFS before confirming the order.
+
+Zone-Based Shipping: Dynamic shipping fees based on location (Inside Dhaka: flat rate, Outside Dhaka: higher rate + volumetric weight logic for heavy PC casings/monitors).
+
+Instructions for the AI:
+
+Begin by generating the schema.prisma file incorporating the entities and relationships mentioned above.
+
+Next, provide the folder structure for the Next.js App Router to support the Tri-Panel architecture.
+
+Then, write the core Next.js Middleware to handle role-based routing (Admin vs. User vs. Rider).
+
+Finally, write the logic for the "Smart PC Builder" compatibility engine and the "Conditional Partial Advance" checkout flow.
+
+Ask me if you need clarification on any specific module before generating the code.

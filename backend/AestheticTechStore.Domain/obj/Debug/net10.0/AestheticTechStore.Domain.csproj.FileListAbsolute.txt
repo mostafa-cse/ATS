@@ -1,0 +1,12 @@
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/bin/Debug/net10.0/AestheticTechStore.Domain.deps.json
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/bin/Debug/net10.0/AestheticTechStore.Domain.dll
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/bin/Debug/net10.0/AestheticTechStore.Domain.pdb
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.csproj.AssemblyReference.cache
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.AssemblyInfoInputs.cache
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.AssemblyInfo.cs
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.csproj.CoreCompileInputs.cache
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.dll
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/refint/AestheticTechStore.Domain.dll
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/AestheticTechStore.Domain.pdb
+/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/Debug/net10.0/ref/AestheticTechStore.Domain.dll

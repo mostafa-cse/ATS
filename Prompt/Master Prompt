@@ -1,0 +1,823 @@
+# AESTHETIC TECH STORE - MASTER PROJECT PROMPT
+## Comprehensive E-Commerce Platform Specification
+
+---
+
+## 1. PROJECT OVERVIEW
+
+**Project Name:** Aesthetic Tech Store
+**Type:** Full-Stack E-Commerce Web Application
+**Domain:** Technology & Electronics Retail
+**Target Market:** Bangladesh (with scalability for international expansion)
+**Architecture:** Multi-role, dual-dashboard system with three distinct user roles
+
+**Core Value Proposition:**
+A smart, aesthetically pleasing e-commerce platform specializing in electronics, PC components, networking gear, and tech accessories. The platform differentiates through a seamless PC Builder tool, MegaCoin loyalty rewards, comprehensive coupon system, and a professional delivery management pipeline.
+
+---
+
+## 2. USER ROLES & AUTHENTICATION SYSTEM
+
+### 2.1 Three-Role Architecture
+
+| Role | Purpose | Access Level |
+|------|---------|-------------|
+| **Admin** | Store management, inventory, orders, analytics | Full system access |
+| **Buyer (User)** | Browse, purchase, track orders, loyalty rewards | Customer-facing features |
+| **Delivery Man** | Pickup, deliver, update delivery status | Delivery pipeline only |
+
+### 2.2 Authentication & Authorization
+- Email/password registration and login for all roles
+- Social login (Google, Facebook) for Buyers
+- Role-based access control (RBAC) with JWT tokens
+- Password reset via email OTP
+- Account verification via email/SMS OTP
+- Separate login portals for each role with role detection
+- Session management with automatic timeout
+- Profile management (avatar, contact info, address book)
+
+### 2.3 Registration Flows
+- **Buyer Registration:** Name, Email, Phone, Password, Address (Division, District, Thana)
+- **Delivery Man Registration:** Name, Email, Phone, NID, Driving License, Vehicle Info, Photo, Emergency Contact
+- **Admin Registration:** Invitation-only by super-admin
+
+---
+
+## 3. PRODUCT CATALOG SYSTEM
+
+### 3.1 Main Product Categories
+
+Based on market analysis of 10 leading Bangladeshi tech retailers, the platform supports the following categories:
+
+**COMPUTING & COMPONENTS**
+- Desktop PC (Pre-built, Custom Build)
+- Laptop (Gaming, Business, Ultrabook, Student)
+- PC Components:
+  - Processor (CPU) - Intel & AMD
+  - Motherboard
+  - Graphics Card (GPU)
+  - RAM (DDR4, DDR5)
+  - SSD / HDD / NVMe
+  - CPU Cooler (Air, Liquid)
+  - PC Casing / Chassis
+  - Power Supply Unit (PSU)
+  - Case Fan / RGB Accessories
+
+**DISPLAY & AUDIO**
+- Monitor (Gaming, Ultrawide, 4K, Curved, Professional)
+- TV (Smart TV, 4K, OLED, QLED)
+- Headphone / Headset (Wired, Wireless, Gaming)
+- Earbuds / TWS
+- Bluetooth Speaker
+- Sound System
+
+**MOBILE & GADGETS**
+- Mobile Phone (Smartphone, Feature Phone)
+- Tablet PC
+- Smart Watch / Fitness Band
+- Power Bank / Portable Charger
+- Mobile Accessories (Case, Screen Protector, Charger, Cable)
+- Portable SSD / Storage
+
+**GAMING**
+- Gaming Console (PlayStation, Xbox, Nintendo)
+- Gaming Chair
+- Gaming Desk / Setup
+- Gaming Controller / Joystick
+- Gaming Mouse Pad
+- RGB Lighting Accessories
+
+**NETWORKING & SECURITY**
+- Router (WiFi 5, WiFi 6, WiFi 6E, WiFi 7)
+- Network Switch
+- Access Point
+- Network Cable & Accessories
+- IP Camera / Security Camera
+- CCTV System
+- Smart Door Lock
+
+**OFFICE & EQUIPMENT**
+- Printer (Inkjet, Laser, All-in-One)
+- Scanner
+- Photocopier
+- UPS / IPS / Power Backup
+- Projector
+- Interactive Flat Panel
+- Office Furniture
+
+**SOFTWARE & SERVICES**
+- Operating System (Windows, Linux)
+- Antivirus / Security Software
+- Office Suite
+- Design Software
+- Server Software
+
+**SERVER & STORAGE**
+- Server (Rack, Tower)
+- NAS Storage
+- Server RAM
+- Server HDD
+- Rack Accessories
+
+**ACCESSORIES**
+- Keyboard (Mechanical, Membrane, Gaming)
+- Mouse (Wired, Wireless, Gaming)
+- Mouse Pad
+- Webcam
+- Microphone
+- USB Hub / Docking Station
+- Cable & Adapter
+- Backpack / Laptop Bag
+
+**APPLIANCES**
+- Air Conditioner
+- Air Purifier
+- Refrigerator
+- Washing Machine
+- Kitchen Appliance
+
+**SPECIAL CATEGORIES**
+- Pre-owned / Refurbished Products
+- Bundle Deals / Combo Offers
+- Flash Sale / Happy Hour Deals
+- New Arrivals
+
+### 3.2 Product Data Structure
+
+Each product MUST contain the following fields:
+
+```
+- Product ID (Auto-generated SKU)
+- Product Name (with full specifications in title)
+- Category (Main > Sub > Child)
+- Brand
+- Model Number
+- Product Images (Multiple, with zoom capability)
+- Product Video (Optional)
+- Short Description
+- Full Description
+- Key Specifications (Key-Value pairs)
+- Regular Price (MRP)
+- Discount Price / Sale Price
+- Discount Percentage (Auto-calculated)
+- Stock Quantity
+- Stock Status (In Stock / Out of Stock / Pre-order)
+- Warranty Information (Duration + Type: Official/Replacement)
+- Guaranty Information (if applicable)
+- Return Policy (Duration + Conditions)
+- Product Tags
+- SEO Title & Meta Description
+- Product Weight & Dimensions
+- Buying Coupon Eligibility
+- MegaCoin Reward (Coins per purchase)
+- Product Status (Published / Draft / Archived)
+- Featured Product Flag
+- New Arrival Flag
+- Best Seller Flag
+- Created At / Updated At
+```
+
+### 3.3 Product Specifications Template (by Category)
+
+**Processor:**
+- Brand (Intel/AMD)
+- Series (Core i3/i5/i7/i9, Ryzen 3/5/7/9)
+- Generation (14th Gen, 7000 Series, etc.)
+- Socket Type
+- Base Frequency
+- Turbo Frequency
+- Core Count
+- Thread Count
+- Cache Size
+- TDP
+- Integrated Graphics
+- Cooler Included (Yes/No)
+
+**Graphics Card:**
+- Brand (NVIDIA/AMD/Intel)
+- GPU Chipset
+- VRAM Size & Type
+- Memory Bus
+- Boost Clock
+- CUDA Cores / Stream Processors
+- Power Connector
+- Recommended PSU
+- Dimensions
+- Display Outputs
+
+**RAM:**
+- Capacity (GB)
+- Type (DDR4/DDR5)
+- Speed (MHz)
+- Latency
+- Form Factor (DIMM/SODIMM)
+- Heat Spreader
+- RGB (Yes/No)
+
+---
+
+## 4. ADMIN DASHBOARD - COMPLETE FEATURES
+
+### 4.1 Dashboard Overview
+- Sales Analytics (Today, This Week, This Month, This Year)
+- Revenue Charts (Line chart with comparison)
+- Order Statistics (Total, Pending, Processing, Delivered, Cancelled, Returned)
+- Product Statistics (Total Products, Low Stock Alerts, Out of Stock)
+- Customer Statistics (New Customers, Total Customers)
+- MegaCoin Analytics (Issued, Redeemed, Outstanding Balance)
+- Recent Orders Table
+- Top Selling Products
+- Low Stock Alerts
+- Delivery Performance Metrics
+- Coupon Usage Statistics
+- Visitor Analytics (Traffic source, page views)
+
+### 4.2 Product Management
+**Add/Edit Product:**
+- Multi-step product creation wizard
+- Rich text editor for descriptions
+- Image upload with cropping (multiple images, drag-drop sorting)
+- Video upload / YouTube embed
+- Dynamic specification fields (based on category)
+- Price management (Regular price, discount price, cost price for admin reference)
+- Inventory management (Stock quantity, low stock threshold, SKU)
+- Warranty & Guaranty configuration
+- Return policy settings (days allowed, condition)
+- Coupon eligibility toggle
+- MegaCoin reward configuration
+- SEO optimization fields
+- Related products selection
+- Cross-sell / Upsell product linking
+- Product status management (Draft, Published, Archived)
+- Bulk import/export via CSV/Excel
+- Bulk price update
+- Bulk stock update
+- Product duplication
+
+**Category Management:**
+- Multi-level category tree (3 levels: Main > Sub > Child)
+- Category image and icon
+- Category description
+- Category-wise product count
+- Category sorting and reordering
+- Enable/Disable categories
+
+**Brand Management:**
+- Brand logo upload
+- Brand description
+- Brand website URL
+- Product count per brand
+- Featured brands showcase
+
+### 4.3 Order Management
+- Complete order list with filters (Status, Date, Customer, Amount)
+- Order detail view with timeline
+- Order status update pipeline:
+  ```
+  Pending -> Confirmed -> Processing -> Ready to Ship -> Handover to Delivery -> In Transit -> Out for Delivery -> Delivered
+  ```
+- Assign order to Delivery Man
+- Invoice generation (PDF download)
+- Order cancellation with reason
+- Return request management
+- Refund processing
+- Order notes / internal comments
+- Print shipping label
+- Bulk order status update
+
+### 4.4 Coupon Management
+**Coupon Types:**
+- Percentage Discount (% off)
+- Fixed Amount Discount (৳ off)
+- Free Shipping
+- Buy X Get Y
+- First-time User Coupon
+- Category-specific Coupon
+- Product-specific Coupon
+- Minimum Purchase Required Coupon
+
+**Coupon Configuration:**
+- Coupon Code (auto-generate or custom)
+- Description
+- Discount Type & Value
+- Minimum Order Amount
+- Maximum Discount Cap
+- Usage Limit (Total & Per User)
+- Valid Date Range (Start & Expiry)
+- Applicable Categories/Products/Brands
+- User restriction (New/Existing/Specific users)
+- Status (Active/Inactive/Expired)
+- Usage statistics
+
+### 4.5 MegaCoin (Loyalty Points) Management
+- Coin earning rules (X coins per ৳ spent)
+- Coin redemption rules (X coins = ৳Y discount)
+- Bonus coin campaigns (Double coins on weekends, Special events)
+- Referral coin rewards
+- Manual coin adjustment (add/deduct) for specific users
+- Coin transaction history per user
+- Coin expiry settings
+- Coin statistics and analytics
+- Coin to currency conversion rate management
+
+### 4.6 Delivery Management
+- Delivery Man list with performance metrics
+- Delivery zone/area assignment
+- Order assignment to delivery personnel
+- Delivery tracking and status updates
+- Delivery completion verification (OTP, Photo proof, Digital signature)
+- Delivery commission/salary tracking
+- Delivery history and reports
+- Real-time delivery status on map (if GPS enabled)
+- Delivery man rating system
+
+### 4.7 User Management
+- Customer list with search, filter, sort
+- Customer detail view with order history
+- Customer activity log
+- Delivery Man list with documents (NID, License)
+- Delivery Man status toggle (Active/Inactive)
+- Admin list with role permissions
+- Bulk email to customers
+- User blocking/unblocking
+
+### 4.8 Return & Refund Management
+- Return request list
+- Return status: Requested -> Approved -> Product Received -> Inspected -> Refunded/Rejected
+- Return reason tracking (Defective, Wrong Item, Not as Described, Changed Mind)
+- Refund method (Wallet/Original Payment)
+- Refund processing
+- Return policy configuration (days, conditions, restocking fee)
+
+### 4.9 Content Management
+- Banner/Slider management (Homepage, Category pages)
+- Promotional campaign creation
+- Flash sale / Happy Hour setup (Time-limited deals)
+- Content pages (About Us, Contact, Terms, Privacy Policy, Return Policy, FAQ)
+- Blog/News management (Create, edit, categories, tags)
+- Testimonial/Reviews management
+- Announcement bar (Top strip messages)
+- Footer content management
+
+### 4.10 Report & Analytics
+- Sales Report (Daily, Weekly, Monthly, Yearly, Custom Range)
+- Revenue Report with chart
+- Product Performance Report
+- Category Performance Report
+- Customer Report (New vs Returning, Top Customers)
+- Order Status Report
+- Return/Refund Report
+- Coupon Usage Report
+- MegaCoin Transaction Report
+- Delivery Performance Report
+- Stock/Inventory Report
+- Export reports to PDF/Excel
+
+### 4.11 Settings & Configuration
+- Store Information (Name, Logo, Favicon, Contact Details)
+- Currency Settings (৳ BDT primary, with multi-currency support)
+- Tax Configuration
+- Shipping/Delivery Settings (Areas, Charges, Free Shipping Threshold)
+- Payment Gateway Configuration (bKash, Nagad, Rocket, SSLCommerz, Cash on Delivery, Card Payment)
+- Email/SMS Notification Templates
+- Social Media Links
+- SEO Global Settings
+- Maintenance Mode Toggle
+- Backup & Restore
+
+---
+
+## 5. BUYER/USER PORTAL - COMPLETE FEATURES
+
+### 5.1 Homepage
+- Header: Logo, Search Bar (with autocomplete/suggestions), Cart Icon, Account, Wishlist, Compare
+- Announcement Bar: Scrolling promotions, offers
+- Main Navigation: Mega menu with all categories and subcategories
+- Hero Banner: Carousel with promotional images/videos
+- Featured Categories: Visual grid with category icons/images
+- PC Builder CTA (Prominent call-to-action for custom PC building)
+- Flash Sale Section: Countdown timer + discounted products
+- Best Sellers / Trending Products
+- New Arrivals
+- Special Offers / Bundle Deals
+- Brand Showcase (Marquee/grid of popular brands)
+- Featured Products (Admin curated)
+- Testimonials / Customer Reviews
+- Footer: Company info, Quick links, Customer service, Newsletter signup, Social links, Payment method icons
+
+### 5.2 Product Discovery
+**Search:**
+- Full-text search with autocomplete
+- Search suggestions (popular searches)
+- Search by category filter
+- Voice search capability (optional)
+
+**Product Listing (Category/Search Results):**
+- Grid/List view toggle
+- Sort options: Default, Price Low-High, Price High-Low, Newest, Discount, Popularity
+- Advanced Filters:
+  - Price Range (Slider + Min/Max input)
+  - Brand (Multi-select checkboxes)
+  - Specifications (Dynamic based on category)
+  - Rating
+  - Availability (In Stock)
+  - Discount Only
+  - Warranty Duration
+- Breadcrumb navigation
+- Active filter tags with clear option
+- Product count display
+- Pagination / Infinite scroll
+
+**Product Detail Page:**
+- Image gallery (Thumbnail navigation, Zoom on hover, Full-screen lightbox)
+- Product video (if available)
+- Product title with key specs summary
+- Price display (Regular price with strikethrough + Discount price + Savings %)
+- Stock status indicator
+- Warranty badge
+- Return policy info
+- Key specifications table
+- Detailed description (with rich formatting)
+- Quantity selector
+- Add to Cart button
+- Buy Now button (Direct checkout)
+- Add to Wishlist
+- Add to Compare
+- Share buttons (Facebook, Messenger, WhatsApp, Copy Link)
+- Delivery info estimator (Enter area code for estimated delivery)
+- Product reviews & ratings (with photos)
+- Q&A section
+- Related products carousel
+- Recently viewed products
+- Product tags
+
+### 5.3 PC Builder Tool (KEY DIFFERENTIATOR)
+Interactive PC building wizard for custom desktop assembly:
+
+**Builder Interface:**
+- Visual PC component layout diagram
+- Step-by-step component selection:
+  1. Processor (CPU)
+  2. CPU Cooler
+  3. Motherboard (Filtered by CPU socket compatibility)
+  4. RAM
+  5. Graphics Card (GPU) - Optional
+  6. SSD / Hard Drive
+  7. Power Supply Unit (PSU) - Wattage calculator
+  8. PC Casing
+  9. Monitor (Optional)
+  10. Keyboard (Optional)
+  11. Mouse (Optional)
+  12. Case Fan / RGB Accessories (Optional)
+
+**Builder Features:**
+- Compatibility checking (Auto-filter incompatible components)
+- Total price calculation with real-time update
+- Power consumption estimator
+- Performance tier indicator (Entry-level, Mid-range, High-end, Enthusiast)
+- Save build configuration (Requires login)
+- Share build (Generate shareable link)
+- Add all to cart
+- Build comparison tool
+- Pre-built build templates (Gaming, Office, Content Creation, Budget)
+- Component upgrade suggestions
+
+### 5.4 Cart & Checkout
+**Cart:**
+- Product image, name, price, quantity (increment/decrement)
+- Individual item removal
+- Cart summary (Subtotal, Discount, Shipping, Total)
+- Coupon code input with apply button
+- MegaCoin redemption toggle (Use coins for discount)
+- Continue Shopping / Proceed to Checkout
+- Save for later / Move to Wishlist
+- Cart persistence across sessions
+- Mini-cart dropdown (Accessible from header)
+
+**Checkout Process:**
+- Step 1: Shipping Address (Select existing / Add new)
+  - Name, Phone, Division, District, Thana, Full Address, Landmark
+- Step 2: Delivery Method Selection
+  - Home Delivery (With estimated date & charge)
+  - Express Delivery (If available)
+- Step 3: Payment Method
+  - Cash on Delivery (COD)
+  - bKash
+  - Nagad
+  - Rocket
+  - Credit/Debit Card (SSLCommerz)
+  - Online Banking
+  - MegaCoin + Other payment (Partial payment)
+- Step 4: Order Review
+  - Product list with prices
+  - Applied coupon display
+  - MegaCoin usage display
+  - Delivery charge
+  - Final total breakdown
+- Step 5: Order Confirmation
+  - Order ID generation
+  - Confirmation message with order summary
+  - Email/SMS confirmation
+  - Continue shopping / Track order
+
+### 5.5 User Account Dashboard
+- **Profile Management:** Edit personal info, change password, profile photo
+- **Address Book:** Multiple addresses, set default, add/edit/delete
+- **My Orders:**
+  - Order list with status badges
+  - Order detail with tracking timeline
+  - Invoice download
+  - Reorder functionality
+  - Order cancellation (Before processing)
+- **Order Tracking:** Real-time status updates with estimated delivery
+- **Return Management:**
+  - Initiate return request (Within return policy period)
+  - Return reason selection
+  - Pickup scheduling
+  - Return status tracking
+  - Refund status
+- **My MegaCoin:**
+  - Current coin balance
+  - Coin earning history
+  - Coin redemption history
+  - Coin expiry alerts
+  - How to earn more coins
+- **My Coupons:**
+  - Available coupons
+  - Used coupons
+  - Expired coupons
+  - Copy coupon code
+- **Wishlist:** Save products for later
+- **Compare List:** Side-by-side product comparison (Max 4 products)
+- **Saved PC Builds:** View and manage saved PC configurations
+- **Notifications:** Order updates, promotional offers, coin updates
+- **Support Tickets:** Raise complaints/queries, track responses
+
+### 5.6 MegaCoin System (User Side)
+- **Earning Coins:**
+  - X coins per ৳ spent (Configurable)
+  - Bonus coins on first purchase
+  - Bonus coins on review submission with photo
+  - Referral bonus (Both referrer and referee get coins)
+  - Special event bonus coins (Birthday, Anniversary)
+  - Flash sale double coins
+- **Redeeming Coins:**
+  - Use coins at checkout for discount
+  - Conversion rate display (e.g., 100 coins = ৳10)
+  - Maximum redemption limit per order
+- **Coin History:** Complete transaction log
+
+### 5.7 Review & Rating System
+- Star rating (1-5) with half-star support
+- Written review
+- Photo upload (Multiple)
+- Review helpfulness voting
+- Verified purchase badge
+- Review moderation (Admin approval optional)
+- Review rewards (MegaCoin incentive)
+
+---
+
+## 6. DELIVERY MAN PORTAL - COMPLETE FEATURES
+
+### 6.1 Dashboard
+- Today's delivery summary (Assigned, Completed, Pending)
+- Earnings summary (Daily, Weekly, Monthly)
+- Performance metrics (On-time rate, Rating)
+- Active deliveries with map view
+- Notification center
+
+### 6.2 Delivery Management
+- **Assigned Orders:** List of orders assigned for delivery
+  - Order ID, Customer name, Address, Phone, Area
+  - Product summary
+  - Delivery timeline
+- **Order Actions:**
+  - Accept/Reject delivery assignment
+  - View order details
+  - Pickup confirmation (From warehouse/store)
+  - OTP verification for handover
+  - Delivery confirmation (Photo proof of delivered package)
+  - Customer signature capture
+  - Delivery note/comments
+  - Cash collection recording (For COD orders)
+  - Delivery status updates in real-time
+
+### 6.3 Navigation & Route
+- Delivery address with map integration (Google Maps)
+- Optimized route suggestions
+- Customer contact (Call/SMS button)
+- Navigation to delivery location
+
+### 6.4 Earnings & History
+- Delivery-wise earnings breakdown
+- Commission/salary details
+- COD collection summary
+- Payment settlement status
+- Delivery history with date filter
+- Monthly earnings report
+
+### 6.5 Profile & Settings
+- Personal profile (Photo, Name, Contact)
+- Vehicle information
+- Work area/zone preference
+- Availability toggle (Online/Offline)
+- Document management (NID, License)
+- Change password
+
+---
+
+## 7. RETURN & REFUND SYSTEM
+
+### 7.1 Return Policy Framework
+- Configurable return window (Default: 7 days for electronics, 3 days for specific items)
+- Return eligibility rules:
+  - Product must be in original condition
+  - Original packaging required
+  - Accessories included
+  - No physical damage
+- Non-returnable items (Software, Consumables, Custom-built PCs after activation)
+
+### 7.2 Return Process Flow
+1. **Request Initiation:** User requests return from order page
+2. **Reason Selection:** Defective, Wrong Item, Not as Described, Changed Mind
+3. **Admin Review:** Approve or reject with reason
+4. **Pickup Scheduling:** Delivery man assigned for pickup
+5. **Product Inspection:** Admin verifies returned product condition
+6. **Resolution:**
+   - Refund to wallet/original payment
+   - Replacement product dispatch
+   - Rejection with reason (Return product to customer)
+
+### 7.3 Refund Processing
+- Wallet refund (Instant)
+- Payment gateway refund (3-10 business days)
+- Partial refund option
+- Refund status tracking
+- Automated refund for approved returns
+
+---
+
+## 8. NOTIFICATION SYSTEM
+
+### 8.1 Notification Channels
+- In-app notifications
+- Email notifications
+- SMS notifications (via API)
+- Push notifications (Browser & Mobile App if applicable)
+
+### 8.2 Notification Triggers
+- Order confirmation, status updates, delivery updates
+- Payment success/failure
+- Return status updates
+- Coupon expiry reminders
+- MegaCoin earnings and expiry alerts
+- Low stock alerts (Admin)
+- New order alerts (Admin, Delivery Man)
+- Review submission notifications
+- Promotional campaigns
+
+---
+
+## 9. SEO & PERFORMANCE
+
+### 9.1 SEO Features
+- Customizable page titles, meta descriptions, URLs
+- Product schema markup (JSON-LD)
+- Sitemap generation (Auto)
+- Robots.txt management
+- Canonical URLs
+- Open Graph tags for social sharing
+- Image ALT tags
+- Clean URL structure
+
+### 9.2 Performance Optimization
+- Image optimization (WebP format, lazy loading, CDN)
+- Database query optimization
+- API response caching (Redis)
+- Page-level caching
+- CDN integration for static assets
+- Code splitting and lazy loading
+- Mobile-first responsive design
+
+---
+
+## 10. SECURITY & COMPLIANCE
+
+- HTTPS/SSL encryption
+- SQL injection prevention
+- XSS protection
+- CSRF token validation
+- Rate limiting on API endpoints
+- Secure password hashing (bcrypt)
+- Input validation and sanitization
+- GDPR/Privacy compliance
+- Secure payment processing (PCI DSS compliance)
+- Regular security audits
+- Data backup and disaster recovery
+
+---
+
+## 11. TECHNICAL ARCHITECTURE SUGGESTION
+
+### Frontend Stack
+- **Framework:** React.js / Next.js (SSR for SEO)
+- **State Management:** Redux Toolkit / Zustand
+- **Styling:** Tailwind CSS / Material-UI
+- **UI Components:** shadcn/ui or similar
+- **Charts:** Chart.js / Recharts
+- **Maps:** Google Maps API / Mapbox
+
+### Backend Stack
+- **Framework:** Node.js with Express / NestJS
+- **Database:** PostgreSQL / MongoDB
+- **Cache:** Redis
+- **Queue:** Bull/Redis Queue for background jobs
+- **File Storage:** AWS S3 / Cloudinary
+- **Search:** Elasticsearch (Optional)
+- **API:** RESTful API + WebSocket for real-time features
+
+### Payment Integration
+- SSLCommerz (Bangladesh)
+- bKash API
+- Nagad API
+- Rocket API
+- Cash on Delivery
+
+### SMS/Email
+- Twilio / MessageBird for SMS
+- SendGrid / AWS SES for Email
+
+---
+
+## 12. ADDITIONAL RECOMMENDED FEATURES
+
+### 12.1 Enhanced User Experience
+- **Product Comparison Tool:** Side-by-side specification comparison
+- **Price Drop Alerts:** Notify users when a wishlisted product's price drops
+- **Back-in-Stock Alerts:** Email notification when out-of-stock items return
+- **Recently Viewed Products:** Track and display browsing history
+- **Quick View Modal:** Preview product details without leaving the listing page
+- **Sticky Add to Cart:** Floating add-to-cart button on product page scroll
+
+### 12.2 Advanced Features
+- **AI Product Recommendations:** "Customers also bought" and "Recommended for you"
+- **Live Chat Support:** Real-time customer assistance
+- **Multi-vendor Marketplace:** Allow third-party sellers (Future expansion)
+- **Subscription Model:** For consumable products (Future)
+- **Mobile App:** React Native / Flutter companion app
+- **Barcode/QR Scanner:** For in-store product lookup
+- **Invoice Generator:** Professional PDF invoice with company branding
+
+### 12.3 Marketing Tools
+- **Affiliate Program:** Referral tracking and commission
+- **Email Marketing Integration:** Campaign creation and analytics
+- **Social Media Login:** Google, Facebook authentication
+- **Social Sharing:** Product sharing with referral tracking
+- **Gift Cards / Vouchers:** Digital gift card system
+- **Abandoned Cart Recovery:** Automated email reminders
+
+### 12.4 Analytics & Business Intelligence
+- **Sales Forecasting:** Predictive analytics
+- **Customer Segmentation:** Categorize by purchase behavior
+- **Churn Analysis:** Identify at-risk customers
+- **A/B Testing Framework:** Test different layouts and offers
+- **Heatmaps:** Track user behavior on pages
+
+---
+
+## 13. USER INTERFACE DESIGN PRINCIPLES
+
+- **Aesthetic:** Clean, modern, minimal design with generous whitespace
+- **Color Scheme:** Tech-inspired (Primary: Deep Blue/Teal, Accent: Orange/Electric Blue, Neutral: White/Gray)
+- **Typography:** Sans-serif, highly readable (Inter/Roboto)
+- **Icons:** Consistent icon set (Lucide/Font Awesome)
+- **Animations:** Subtle micro-interactions, smooth page transitions
+- **Responsiveness:** Fully responsive across Desktop, Tablet, Mobile
+- **Accessibility:** WCAG 2.1 AA compliance, keyboard navigation, screen reader support
+- **Dark Mode:** Optional dark theme toggle
+
+---
+
+## 14. BRANDS TO FEATURE (Based on Market Analysis)
+
+**Computing:** Intel, AMD, ASUS, Gigabyte, MSI, ASRock, Corsair, Kingston, Samsung, WD, Seagate, Cooler Master, NZXT, Thermaltake, Lian Li,be quiet!, Noctua, EVGA, Sapphire, Zotac, Palit
+
+**Laptops:** Apple, Dell, HP, Lenovo, ASUS, Acer, MSI, Microsoft, Huawei, Walton
+
+**Peripherals:** Logitech, Razer, SteelSeries, Corsair, HyperX, Redragon, Fantech, Rapoo, A4Tech, Delux
+
+**Audio:** Sony, Bose, JBL, Sennheiser, Audio-Technica, Edifier, Havit, Baseus, Ugreen
+
+**Mobile:** Apple, Samsung, Xiaomi, OnePlus, Realme, Vivo, Oppo, Huawei, Walton, Symphony
+
+**Networking:** TP-Link, D-Link, ASUS, Tenda, Netgear, MikroTik, Ubiquiti, Totolink, Cudy
+
+**Display:** Samsung, LG, ASUS, Dell, BenQ, ViewSonic, Acer, MSI, Gigabyte, Xiaomi
+
+**Camera:** Canon, Nikon, Sony, Fujifilm, Hikvision, Dahua, Ezviz, TP-Link Tapo
+
+**Power:** APC, CyberPower, MaxGreen, PowerPac, Walton
+
+---
+*End of Master Prompt - Aesthetic Tech Store*

@@ -22,7 +22,7 @@ export default function LedgerPage() {
   const fetchLedger = async () => {
     try {
       const token = localStorage.getItem('auth_token');
-      const res = await fetch('http://localhost:5171/api/rider/ledger', {
+      const res = await fetch('/api/rider/ledger', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj": {}
+    "/workspaces/ATS/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj": {}
   },
   "projects": {
-    "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj": {
+    "/workspaces/ATS/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj",
+        "projectUniqueName": "/workspaces/ATS/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj",
         "projectName": "AestheticTechStore.Domain",
-        "projectPath": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj",
-        "packagesPath": "/Users/mostafakamal/.nuget/packages/",
-        "outputPath": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Domain/obj/",
+        "projectPath": "/workspaces/ATS/backend/AestheticTechStore.Domain/AestheticTechStore.Domain.csproj",
+        "packagesPath": "/home/codespace/.nuget/packages/",
+        "outputPath": "/workspaces/ATS/backend/AestheticTechStore.Domain/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/mostafakamal/.nuget/NuGet/NuGet.Config"
+          "/home/codespace/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -24,7 +24,6 @@
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -39,11 +38,10 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.Extensions.Identity.Stores": {
@@ -67,7 +65,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.301/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.200/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

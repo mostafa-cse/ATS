@@ -17,7 +17,7 @@ export default function DeliveryLayout({
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('auth_token');
-        const res = await fetch('http://localhost:5171/api/rider/me', {
+        const res = await fetch('/api/rider/me', {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         if (res.ok) {

@@ -35,8 +35,8 @@ export default function LogisticsPage() {
       const headers = { 'Authorization': `Bearer ${token}` };
       
       const [ridersRes, shipmentsRes] = await Promise.all([
-        fetch('http://localhost:5171/api/admin/riders', { headers }),
-        fetch('http://localhost:5171/api/admin/shipments', { headers })
+        fetch('/api/admin/riders', { headers }),
+        fetch('/api/admin/shipments', { headers })
       ]);
       
       if (ridersRes.ok) setRiders(await ridersRes.json());
@@ -56,7 +56,7 @@ export default function LogisticsPage() {
     
     try {
       const token = localStorage.getItem('auth_token');
-      const res = await fetch('http://localhost:5171/api/admin/assign-logistics', {
+      const res = await fetch('/api/admin/assign-logistics', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',

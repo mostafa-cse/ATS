@@ -65,7 +65,7 @@ export default function PCBuilderPage() {
   const [addedToCart, setAddedToCart] = useState(false);
 
   useEffect(() => {
-    fetch('http://localhost:5171/api/products')
+    fetch('/api/products')
       .then(r => r.json())
       .then(data => setProducts(Array.isArray(data) ? data : []))
       .catch(() => setProducts([]));
@@ -87,7 +87,7 @@ export default function PCBuilderPage() {
     if (ids.length === 0) { setCompatibility(null); return; }
     setIsChecking(true);
     try {
-      const res = await fetch('http://localhost:5171/api/pcbuilder/check-compatibility', {
+      const res = await fetch('/api/pcbuilder/check-compatibility', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(ids),

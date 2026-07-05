@@ -95,7 +95,7 @@ function ProductsContent() {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:5171/api/products')
+    fetch('/api/products')
       .then(r => r.json())
       .then(data => {
         const arr = Array.isArray(data) ? data : [];

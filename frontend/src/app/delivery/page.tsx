@@ -24,7 +24,7 @@ export default function ActiveDeliveriesPage() {
   const fetchActiveDeliveries = async () => {
     try {
       const token = localStorage.getItem('auth_token');
-      const res = await fetch('http://localhost:5171/api/rider/deliveries/active', {
+      const res = await fetch('/api/rider/deliveries/active', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {
@@ -40,7 +40,7 @@ export default function ActiveDeliveriesPage() {
   const handleCompleteDelivery = async (id: string) => {
     try {
       const token = localStorage.getItem('auth_token');
-      const res = await fetch(`http://localhost:5171/api/rider/deliveries/${id}/complete`, {
+      const res = await fetch(`/api/rider/deliveries/${id}/complete`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });

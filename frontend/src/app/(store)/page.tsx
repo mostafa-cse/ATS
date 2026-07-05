@@ -134,7 +134,7 @@ export default function HomePage() {
 
   // Fetch products from backend
   useEffect(() => {
-    fetch('http://localhost:5171/api/products')
+    fetch('/api/products')
       .then(r => r.json())
       .then(data => { setProducts(Array.isArray(data) ? data : []); })
       .catch(() => setProducts([]))

@@ -21,7 +21,7 @@ export default function DeliveryHistoryPage() {
   const fetchHistory = async () => {
     try {
       const token = localStorage.getItem('auth_token');
-      const res = await fetch('http://localhost:5171/api/rider/deliveries/history', {
+      const res = await fetch('/api/rider/deliveries/history', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       if (res.ok) {

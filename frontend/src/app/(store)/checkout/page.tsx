@@ -52,7 +52,7 @@ export default function CheckoutPage() {
     setPlacing(true);
     try {
       const token = localStorage.getItem('token');
-      const res = await fetch('http://localhost:5171/api/orders', {
+      const res = await fetch('/api/orders', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

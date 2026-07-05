@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: aesthetic-tech-store-api
+    rootDir: backend
+    runtime: dotnet
+    buildCommand: dotnet publish AestheticTechStore.Api/AestheticTechStore.Api.csproj -c Release -o out
+    startCommand: dotnet out/AestheticTechStore.Api.dll
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__DefaultConnection
+        sync: false
+      - key: Jwt__Key
+        sync: false
+      - key: Jwt__Issuer
+        value: AestheticTechStore
+      - key: Jwt__Audience
+        value: AestheticTechStoreUsers
+      - key: Jwt__DurationInMinutes
+        value: "1440"

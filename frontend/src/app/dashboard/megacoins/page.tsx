@@ -23,8 +23,8 @@ export default function MegaCoinsPage() {
         const headers = { 'Authorization': `Bearer ${token}` };
         
         const [profileRes, txRes] = await Promise.all([
-          fetch('http://localhost:5171/api/user/me', { headers }),
-          fetch('http://localhost:5171/api/user/megacoins', { headers })
+          fetch('/api/user/me', { headers }),
+          fetch('/api/user/megacoins', { headers })
         ]);
         
         if (profileRes.ok) {

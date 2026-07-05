@@ -1,0 +1,172 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum Role {
+  Admin
+  User
+  Rider
+}
+
+enum PaymentMethod {
+  CashOnDelivery
+  bKash
+  Nagad
+  SSLCommerz
+}
+
+enum OrderStatus {
+  Pending
+  Confirmed
+  Processing
+  ReadyToShip
+  HandoverToDelivery
+  InTransit
+  OutForDelivery
+  Delivered
+  Cancelled
+  Returned
+}
+
+enum TransactionType {
+  Earned
+  Spent
+}
+
+model AppUser {
+  id                 String                @id @default(cuid())
+  email              String                @unique
+  passwordHash       String?
+  firstName          String
+  lastName           String
+  phoneNumber        String?               @unique
+  role               Role                  @default(User)
+  megaCoinBalance    Decimal               @default(0) @db.Decimal(18, 2)
+  orders             Order[]               @relation("UserOrders")
+  riderOrders        Order[]               @relation("RiderOrders")
+  megaCoinTransactions MegaCoinTransaction[]
+  addresses          Address[]
+  createdAt          DateTime              @default(now())
+  updatedAt          DateTime              @updatedAt
+}
+
+model ProductCategory {
+  id               String             @id @default(cuid())
+  name             String
+  parentCategoryId String?
+  parentCategory   ProductCategory?   @relation("CategoryTree", fields: [parentCategoryId], references: [id])
+  subCategories    ProductCategory[]  @relation("CategoryTree")
+  products         Product[]
+}
+
+model Brand {
+  id       String    @id @default(cuid())
+  name     String    @unique
+  products Product[]
+}
+
+model Product {
+  id                 String           @id @default(cuid())
+  sku                String           @unique
+  name               String
+  modelNumber        String
+  categoryId         String
+  category           ProductCategory   @relation(fields: [categoryId], references: [id])
+  brandId            String
+  brand              Brand            @relation(fields: [brandId], references: [id])
+  images             ProductImage[]
+  videoUrl           String?
+  shortDescription   String
+  fullDescription    String
+  regularPrice       Decimal          @db.Decimal(18, 2)
+  discountPrice      Decimal?         @db.Decimal(18, 2)
+  stockQuantity      Int
+  stockStatus        String           @default("InStock")
+  warrantyInfo       String
+  guarantyInfo       String?
+  returnPolicy       String           @default("7 Days Replacement")
+  productTags        String           @default("")
+  seoTitle           String
+  seoMetaDescription String
+  weightInKg         Decimal?         @db.Decimal(10, 3)
+  dimensions         String?
+  isCouponEligible   Boolean          @default(true)
+  megaCoinReward     Int              @default(0)
+  productStatus      String           @default("Published")
+  isFeatured         Boolean          @default(false)
+  isNewArrival       Boolean          @default(false)
+  isBestSeller       Boolean          @default(false)
+  technicalSpecs     Json
+  socketType         String?
+  formFactor         String?
+  ramType            String?
+  requiredWattage    Int?
+  orderItems         OrderItem[]
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+}
+
+model ProductImage {
+  id        String   @id @default(cuid())
+  url       String
+  altText   String?
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Address {
+  id          String   @id @default(cuid())
+  userId      String
+  user        AppUser  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  line1       String
+  line2       String?
+  division    String
+  district    String
+  thana       String
+  city        String
+  postalCode  String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Order {
+  id            String       @id @default(cuid())
+  userId        String
+  user          AppUser      @relation("UserOrders", fields: [userId], references: [id])
+  riderId       String?
+  rider         AppUser?     @relation("RiderOrders", fields: [riderId], references: [id])
+  totalAmount   Decimal      @db.Decimal(18, 2)
+  advancePaid   Decimal      @default(0) @db.Decimal(18, 2)
+  paymentMethod PaymentMethod
+  status        OrderStatus  @default(Pending)
+  shippingFee   Decimal      @default(0) @db.Decimal(18, 2)
+  orderItems    OrderItem[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+}
+
+model OrderItem {
+  id         String   @id @default(cuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product  @relation(fields: [productId], references: [id])
+  quantity   Int      @default(1)
+  unitPrice  Decimal  @db.Decimal(18, 2)
+}
+
+model MegaCoinTransaction {
+  id          String         @id @default(cuid())
+  appUserId   String
+  appUser     AppUser        @relation(fields: [appUserId], references: [id], onDelete: Cascade)
+  amount      Decimal        @db.Decimal(18, 2)
+  type        TransactionType
+  description String         @default("")
+  createdAt   DateTime       @default(now())
+}

@@ -22,8 +22,8 @@ export default function DashboardOverview() {
         const headers = { 'Authorization': `Bearer ${token}` };
 
         const [profileRes, ordersRes] = await Promise.all([
-          fetch('http://localhost:5171/api/user/me', { headers }),
-          fetch('http://localhost:5171/api/user/orders', { headers })
+          fetch('/api/user/me', { headers }),
+          fetch('/api/user/orders', { headers })
         ]);
 
         if (profileRes.ok) {

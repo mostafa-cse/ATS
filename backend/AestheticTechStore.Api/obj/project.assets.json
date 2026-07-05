@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
     "net10.0": {
       "Humanizer.Core/2.14.1": {
@@ -2219,19 +2219,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/mostafakamal/.nuget/packages/": {}
+    "/home/codespace/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Api/AestheticTechStore.Api.csproj",
+      "projectUniqueName": "/workspaces/ATS/backend/AestheticTechStore.Api/AestheticTechStore.Api.csproj",
       "projectName": "AestheticTechStore.Api",
-      "projectPath": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Api/AestheticTechStore.Api.csproj",
-      "packagesPath": "/Users/mostafakamal/.nuget/packages/",
-      "outputPath": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Api/obj/",
+      "projectPath": "/workspaces/ATS/backend/AestheticTechStore.Api/AestheticTechStore.Api.csproj",
+      "packagesPath": "/home/codespace/.nuget/packages/",
+      "outputPath": "/workspaces/ATS/backend/AestheticTechStore.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/mostafakamal/.nuget/NuGet/NuGet.Config"
+        "/home/codespace/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
@@ -2241,14 +2241,13 @@
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Application/AestheticTechStore.Application.csproj": {
-              "projectPath": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Application/AestheticTechStore.Application.csproj"
+            "/workspaces/ATS/backend/AestheticTechStore.Application/AestheticTechStore.Application.csproj": {
+              "projectPath": "/workspaces/ATS/backend/AestheticTechStore.Application/AestheticTechStore.Application.csproj"
             },
-            "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Infrastructure/AestheticTechStore.Infrastructure.csproj": {
-              "projectPath": "/Users/mostafakamal/Project/Asthetic Tech Store/backend/AestheticTechStore.Infrastructure/AestheticTechStore.Infrastructure.csproj"
+            "/workspaces/ATS/backend/AestheticTechStore.Infrastructure/AestheticTechStore.Infrastructure.csproj": {
+              "projectPath": "/workspaces/ATS/backend/AestheticTechStore.Infrastructure/AestheticTechStore.Infrastructure.csproj"
             }
           }
         }
@@ -2263,11 +2262,10 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
@@ -2304,7 +2302,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.301/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/10.0.200/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

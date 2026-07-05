@@ -18,12 +18,12 @@
 #         value: AestheticTechStoreUsers
 #       - key: Jwt__DurationInMinutes
 #         value: "1440"
-
 services:
   - type: web
     name: aesthetic-tech-store-api
     rootDir: backend
     env: docker
+    plan: free   # <--- এই লাইনটি যুক্ত করা হয়েছে ফ্রিতে ডেপ্লয় করার জন্য
     envVars:
       - key: ASPNETCORE_ENVIRONMENT
         value: Production
